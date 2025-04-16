@@ -2,10 +2,10 @@ const express = require('express');
 const cors = require('cors');
 const mysql = require('mysql2');
 const bcrypt = require('bcryptjs');
-// const jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 const app = express();
-const port = 5000;
-const SECRET = process.env.JWT_SECRET;
+const port = process.env.PORT || 5000;
+const SECRET = process.env.JWT_SECRET || 'nhif@2025_secure_token_key!x9h7A$Z2';
 
 
 
@@ -122,8 +122,8 @@ app.delete('/api/overseas/:doc_no', (req, res) => {
 });
 
 
-const jwt = require('jsonwebtoken');
-const SECRET = 'your_secret_key_here';
+// const jwt = require('jsonwebtoken');
+// const SECRET = 'your_secret_key_here';
 
 // Middleware to verify JWT
 function verifyToken(req, res, next) {
