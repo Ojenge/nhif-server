@@ -1,21 +1,28 @@
 const express = require('express');
 const cors = require('cors');
 const mysql = require('mysql2');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 // const jwt = require('jsonwebtoken');
 const app = express();
 const port = 5000;
-// const SECRET = 'your_secret_key_here';
+const SECRET = process.env.JWT_SECRET;
+
 
 
 app.use(cors());
 app.use(express.json());
 
+// const db = mysql.createConnection({
+//   host: 'localhost',
+//   user: 'dbeo33bob47u0n',
+//   password: 'OJnhif_2023',
+//   database: 'dbeo33bob47u0n'
+// });
 const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'Hermione#1989',
-  database: 'nhif'
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME
 });
 
 db.connect(err => {
